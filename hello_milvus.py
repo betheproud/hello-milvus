@@ -163,25 +163,25 @@ for hits in result:
         print(f"hit: {hit}, random field: {hit.entity.get('random')}")
 print(search_latency_fmt.format(end_time - start_time))
 
-###############################################################################
-# 6. delete entities by PK
-# You can delete entities by their PK values using boolean expressions.
-ids = insert_result.primary_keys
+# ###############################################################################
+# # 6. delete entities by PK
+# # You can delete entities by their PK values using boolean expressions.
+# ids = insert_result.primary_keys
 
-expr = f'pk in ["{ids[0]}" , "{ids[1]}"]'
-print(fmt.format(f"Start deleting with expr `{expr}`"))
+# expr = f'pk in ["{ids[0]}" , "{ids[1]}"]'
+# print(fmt.format(f"Start deleting with expr `{expr}`"))
 
-result = hello_milvus.query(expr=expr, output_fields=["random", "embeddings"])
-print(f"query before delete by expr=`{expr}` -> result: \n-{result[0]}\n-{result[1]}\n")
+# result = hello_milvus.query(expr=expr, output_fields=["random", "embeddings"])
+# print(f"query before delete by expr=`{expr}` -> result: \n-{result[0]}\n-{result[1]}\n")
 
-hello_milvus.delete(expr)
+# hello_milvus.delete(expr)
 
-result = hello_milvus.query(expr=expr, output_fields=["random", "embeddings"])
-print(f"query after delete by expr=`{expr}` -> result: {result}\n")
+# result = hello_milvus.query(expr=expr, output_fields=["random", "embeddings"])
+# print(f"query after delete by expr=`{expr}` -> result: {result}\n")
 
 
-###############################################################################
-# 7. drop collection
-# Finally, drop the hello_milvus collection
-print(fmt.format("Drop collection `hello_milvus`"))
-utility.drop_collection("hello_milvus")
+# ###############################################################################
+# # 7. drop collection
+# # Finally, drop the hello_milvus collection
+# print(fmt.format("Drop collection `hello_milvus`"))
+# utility.drop_collection("hello_milvus")

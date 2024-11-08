@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   etcd:
@@ -36,12 +36,12 @@ services:
       timeout: 20s
       retries: 3
 
-  standalone:
+  milvus:
     container_name: milvus-standalone
     image: milvusdb/milvus:v2.4.15
     command: ["milvus", "run", "standalone"]
     security_opt:
-    - seccomp:unconfined
+      - seccomp:unconfined
     environment:
       ETCD_ENDPOINTS: etcd:2379
       MINIO_ADDRESS: minio:9000
@@ -59,6 +59,18 @@ services:
     depends_on:
       - "etcd"
       - "minio"
+
+  attu:
+    container_name: milvus-attu
+    image: zilliz/attu:v2.4.8
+    environment:
+      MILVUS_URL: milvus:19530
+    ports:
+      - "8000:3000"
+    depends_on:
+      - "milvus"
+    networks:
+      - default
 
 networks:
   default:
