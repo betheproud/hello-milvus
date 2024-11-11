@@ -5,6 +5,12 @@ name = "pypi"
 
 [packages]
 pymilvus = "*"
+sentence-transformers = "*"
+datasets = "*"
+torch = "*"
+pandas = "*"
+numpy = "*"
+tqdm = "*"
 
 [dev-packages]
 

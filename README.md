@@ -65,6 +65,14 @@ Using /Users/raiz/.pyenv/versions/3.10.0/bin/python33.10.0 to create virtualenv.
 Virtualenv location: /Users/raiz/.local/share/virtualenvs/hello-milvus-kq6S-lQc
 Creating a Pipfile for this project...
 
+```
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+```
+
 ❯ pipenv install pymilvus
 Pipfile.lock not found, creating...
 Locking [packages] dependencies...
